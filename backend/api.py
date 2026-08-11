@@ -19,6 +19,7 @@ rag_system = None
 #     yield
 #     print("Shutting down API.")
 @asynccontextmanager
+# @asynccontextmanager
 async def lifespan(app: FastAPI):
     global rag_system
 
@@ -26,27 +27,12 @@ async def lifespan(app: FastAPI):
 
     rag_system = ConversationalRAG()
 
-    # Process documents from knowledge_base and uploaded_documents
-    try:
-        chunks_added = rag_system.load_and_process_documents()
-        print(f"Document processing complete. Added {chunks_added} chunks.")
-    except Exception as e:
-        print(f"Document processing failed: {e}")
-
-    # Initialize RAG chain after documents are processed
+    # Initialize from existing vector database
     rag_system.initialize_chain()
 
     yield
 
-    print("Shutting down API.")
-
-app = FastAPI(
-    title="Conversational RAG API",
-    description="An API for interacting with the RAG chatbot.",
-    version="1.0.0",
-    lifespan=lifespan
-)
-
+    print("Shutting down API.") 
 class ChatRequest(BaseModel):
     question: str
     # This is more flexible and accepts any dictionary structure in the list
