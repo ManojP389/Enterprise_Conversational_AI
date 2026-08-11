@@ -25,6 +25,7 @@ langchain-groq
 langchain-chroma
 langchain-community
 sentence-transformers
+langchain-huggingface
 huggingface-hub
 
 chromadb
