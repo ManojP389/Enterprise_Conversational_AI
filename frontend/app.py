@@ -5,7 +5,13 @@ import requests
 import json
 import os
 
-API_BASE_URL = "http://localhost:8000"
+# API_BASE_URL = "http://localhost:8000"
+
+
+API_BASE_URL = os.getenv(
+    "API_BASE_URL",
+    "http://localhost:8000"
+)
 CHAT_HISTORY_DIR = "chat_history"
 
 def save_chat_session(session_name, messages):

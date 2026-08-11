@@ -1,21 +1,43 @@
-# Core LangChain & AI
+# # Core LangChain & AI
+# langchain
+# langchain-openai
+# sentence-transformers
+# huggingface-hub
+
+# # Vector Store
+# chromadb
+
+# # Document Loaders
+# pypdf
+# unstructured
+
+# # Backend API
+# fastapi
+# uvicorn[standard]
+# pydantic
+
+# # Frontend
+# streamlit
+# requests
 langchain
 langchain-openai
+langchain-groq
+langchain-chroma
+langchain-community
 sentence-transformers
 huggingface-hub
 
-# Vector Store
 chromadb
 
-# Document Loaders
 pypdf
 unstructured
 
-# Backend API
 fastapi
 uvicorn[standard]
 pydantic
 
-# Frontend
 streamlit
 requests
+
+rank-bm25
+numpy   

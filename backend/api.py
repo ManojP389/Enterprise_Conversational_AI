@@ -10,13 +10,34 @@ from backend.rag_core import ConversationalRAG
 
 rag_system = None
 
+# @asynccontextmanager
+# async def lifespan(app: FastAPI):
+#     global rag_system
+#     print("Initializing RAG System on startup...")
+#     rag_system = ConversationalRAG()
+#     rag_system.initialize_chain() # Will gracefully handle if DB doesn't exist
+#     yield
+#     print("Shutting down API.")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global rag_system
+
     print("Initializing RAG System on startup...")
+
     rag_system = ConversationalRAG()
-    rag_system.initialize_chain() # Will gracefully handle if DB doesn't exist
+
+    # Process documents from knowledge_base and uploaded_documents
+    try:
+        chunks_added = rag_system.load_and_process_documents()
+        print(f"Document processing complete. Added {chunks_added} chunks.")
+    except Exception as e:
+        print(f"Document processing failed: {e}")
+
+    # Initialize RAG chain after documents are processed
+    rag_system.initialize_chain()
+
     yield
+
     print("Shutting down API.")
 
 app = FastAPI(
