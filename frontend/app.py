@@ -150,7 +150,7 @@ if prompt := st.chat_input("Ask a question..."):
                 st.session_state.messages.append({"role": "assistant", "content": "Error: Could not get a response."})
 
     save_chat_session(st.session_state.current_chat, st.session_state.messages)
-file: frontend/app.py
+# file: frontend/app.py
 
 # import streamlit as st
 # import requests
