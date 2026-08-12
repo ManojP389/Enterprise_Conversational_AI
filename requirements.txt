@@ -1,29 +1,11 @@
-# # Core LangChain & AI
-# langchain
-# langchain-openai
-# sentence-transformers
-# huggingface-hub
-
-# # Vector Store
-# chromadb
-
-# # Document Loaders
-# pypdf
-# unstructured
-
-# # Backend API
-# fastapi
-# uvicorn[standard]
-# pydantic
-
-# # Frontend
-# streamlit
-# requests
 langchain
 langchain-openai
 langchain-groq
 langchain-chroma
 langchain-community
+
+# CPU-only PyTorch
+torch==2.12.1
 sentence-transformers
 langchain-huggingface
 huggingface-hub
@@ -41,4 +23,6 @@ streamlit
 requests
 
 rank-bm25
-numpy   
+numpy
+
+--extra-index-url https://download.pytorch.org/whl/cpu
